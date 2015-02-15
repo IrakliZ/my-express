@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    div
+        - var item = pull
+        h3
+            a(href=item.html_url)
+                = item.title
+        
+        div.row
+            div.three.columns
+                if item.user.avatar_url
+                    img(width='200' src=item.user.avatar_url)
+                else if item.user.gravatar_id
+                    img(width='200' src=item.user.gravatar_id)
+            div.seven.columns
+                = "Owner:"
+                h5
+                    a(href=item.user.html_url)
+                        = item.user.login
+                = "Type:"
+                h5= item.user.type
+        div.row
+            p= item.body
