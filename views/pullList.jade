@@ -1,0 +1,18 @@
+extends layout.jade
+
+block content
+    div.container
+        table.u-full-width
+            thead
+                tr
+                    th Title
+                    th State
+                    th User
+            tbody
+            each item in pulls
+                tr
+                    td
+                        a(href='/pull/view/' + item.id)
+                            = item.title
+                    th= item.state
+                    th= item.user.login
