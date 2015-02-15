@@ -1,0 +1,21 @@
+extends layout.jade
+
+block content
+    div.container
+        div.u-full-width
+            table.u-full-width
+                thead
+                    tr
+                        th Name
+                        th Owner
+                        th Stargazers
+                        th Forks
+                tbody
+                each item in repos
+                    tr
+                        td
+                            a(href='/repo/view/' + item.id)
+                                = item.name
+                        td= item.owner.login
+                        td= item.stargazers_count
+                        td= item.forks
