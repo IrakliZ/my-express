@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    div
+        - var item = repo
+        h3
+            a(href=item.html_url)
+                = item.full_name
+        
+        div.row
+            div.three.columns
+                if item.owner.avatar_url
+                    img(width='200' src=item.owner.avatar_url)
+                else if item.owner.gravatar_id
+                    img(width='200' src=item.owner.gravatar_id)
+            div.seven.columns
+                = "Owner:"
+                h5
+                    a(href=item.owner.html_url)
+                        = item.owner.login
+                = "Type:"
+                h5= item.owner.type
+                if item.private
+                    h5= "Private"
+                else
+                    h5= "Public"
+            div.two.columns
+                = "Stars: " + item.stargazers_count
+                br
+                = "Forks: " + item.forks
